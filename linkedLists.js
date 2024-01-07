@@ -70,6 +70,20 @@ class LinkedList {
     return false;
   }
 
+  getByValue(value) {
+    let current = this.head;
+    let indexCount = 0;
+
+    while (current) {
+      if (current.data === value) {
+        return indexCount;
+      }
+      current = current.next;
+      indexCount++;
+    }
+    return "value not found in list";
+  }
+
   getHead() {
     return this.head;
   }
@@ -118,4 +132,4 @@ ll.insertFirst(50);
 // console.log("get tail:", ll.geTail())
 // console.log("remove last:", ll.removeLast())
 ll.toString();
-console.log("ll contains:", ll.getContains(90));
+console.log("ll contains:", ll.getByValue(90));
