@@ -81,7 +81,7 @@ class LinkedList {
       current = current.next;
       indexCount++;
     }
-    return "value not found in list";
+    return null;
   }
 
   getHead() {
@@ -132,4 +132,4 @@ ll.insertFirst(50);
 // console.log("get tail:", ll.geTail())
 // console.log("remove last:", ll.removeLast())
 ll.toString();
-console.log("ll contains:", ll.getByValue(90));
+console.log("ll contains:", ll.getByValue(9000));
