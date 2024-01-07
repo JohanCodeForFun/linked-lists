@@ -121,6 +121,22 @@ class LinkedList {
     this.size++;
   }
 
+  removeAtIndex(index) {
+    // If the index is out of range
+    if (index < 0 || index >= this.size) return;
+
+    // If the index is zero, prepend the new node to the start of the list
+    if (index === 0) {
+      this.head = this.head.next;
+    } else {
+      const previous = this.getByIndex(index - 1);
+      const nodeToRemove = previous.next;
+      previous.next = nodeToRemove.next;
+    }
+
+    this.size--;
+  }
+
   toString() {
     let output = "";
     let current = this.head;
@@ -143,9 +159,9 @@ ll.insertLast(23);
 ll.insertLast(90);
 
 ll.insertFirst(50);
-ll.insertAtIndex(5, 5000)
-ll.insertAtIndex(3, 3000)
-ll.insertAtIndex(1, 1000)
+ll.insertAtIndex(5, 5000);
+ll.insertAtIndex(3, 3000);
+ll.insertAtIndex(1, 1000);
 
 // console.log("list size:", ll.getSize())
 // console.log("get head:", ll.getHead())
@@ -153,5 +169,9 @@ ll.insertAtIndex(1, 1000)
 // ll.toString();
 // console.log("get tail:", ll.geTail())
 // console.log("remove last:", ll.removeLast())
+// console.log("ll contains:", ll.getByValue(9000));
 ll.toString();
-console.log("ll contains:", ll.getByValue(9000));
+ll.removeAtIndex(0);
+ll.removeAtIndex(1);
+ll.removeAtIndex(2);
+ll.toString();
