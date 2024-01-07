@@ -102,6 +102,25 @@ class LinkedList {
     return current;
   }
 
+  insertAtIndex(index, data) {
+    // If the index is out of range
+    if (index < 0 || index > this.size) return;
+
+    // If the index is zero, prepend the new node to the start of the list
+    if (index === 0) {
+      this.insertFirst(data);
+      return;
+    }
+
+    // Otherwise, use getByIndex to find the previous node
+    const previous = this.getByIndex(index - 1);
+    const newNode = new Node(data);
+    newNode.next = previous.next;
+    previous.next = newNode;
+
+    this.size++;
+  }
+
   toString() {
     let output = "";
     let current = this.head;
@@ -124,6 +143,9 @@ ll.insertLast(23);
 ll.insertLast(90);
 
 ll.insertFirst(50);
+ll.insertAtIndex(5, 5000)
+ll.insertAtIndex(3, 3000)
+ll.insertAtIndex(1, 1000)
 
 // console.log("list size:", ll.getSize())
 // console.log("get head:", ll.getHead())
